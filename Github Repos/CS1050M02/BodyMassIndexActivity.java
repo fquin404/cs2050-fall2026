@@ -43,21 +43,21 @@ public class BodyMassIndexActivity
 			{
 				if (bmi >= 18.5)
 				{
-					System.out.println(" You are Underweight");
+					System.out.println(" ,you are Underweight");
 				} else
 				{
 					if (bmi >= 24.9)
 					{
-						System.out.println(" You are Healthy");
+						System.out.println(" ,you are Healthy");
 					} else
 					{
 						if (bmi >= 29.9)
 						{
-							System.out.println(" You are Overweight");
+							System.out.println(" ,you are Overweight");
 						} else
 						{
 							if (bmi >= 30)
-								System.out.println(" You are Obese");
+								System.out.println(" ,you are Obese");
 						}
 					}
 				}
