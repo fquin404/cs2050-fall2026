@@ -14,13 +14,13 @@ public class M02L06MathCharsStrings
 	{
 
 		Scanner input = new Scanner(System.in);
-		// A String is an object that represents a sequence of characters.
+		// string is an object that represents a sequence of characters.
 
-		// A char is a primitive data type that represents a single character
+		// char is a primitive data type that represents a single character
 
 		// next() reads a single word (token) from the input, stopping at whitespace.
 
-		// Concatenate means to link or join things together.
+		// concatenate means to link or join things together.
 
 		System.out.print("Enter a first name: ");
 		String firstName = input.next();

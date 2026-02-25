@@ -30,7 +30,7 @@ public class luminaLoop
 				{
 				do while (exponent >= 1)
 					{
-						System.out.printf("The exponent is", exponent);
+						System.out.printf("The exponent is",exponent);
 					}
 				}
 			}
