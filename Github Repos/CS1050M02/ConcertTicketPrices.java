@@ -5,7 +5,6 @@
  *  This program will help a person choose concert seats.
  */
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ConcertTicketPrices
@@ -21,7 +20,7 @@ public class ConcertTicketPrices
 		int price = 0;
 
 		// input for section
-		System.out.print("Enter ONE character for section - F: Front, C: Center, S: Side, U: Upper: ");
+		System.out.print("Enter one character for section - F: Front, C: Center, S: Side, U: Upper: ");
 		String sectionInput = input.next();
 		sectionChar = sectionInput.charAt(0);
 		char upperSectionChar = Character.toUpperCase(sectionChar);
@@ -42,44 +41,37 @@ public class ConcertTicketPrices
 		} else
 		{
 			System.out.println("Invalid section, program ending");
-			input.close();
-			return;
+
 		}
-
-		System.out.println("Selected " + sectionName);
-
-		// asking for the row
-		try
+		if (!sectionName.isEmpty())
 		{
+			System.out.println("Selected " + sectionName);
+
+			// asking for the row
 			System.out.print("Enter row: ");
 			row = input.nextInt();
 
 			if (row < 1 || row > 60)
 			{
 				System.out.println("Invalid row, program ending");
-				input.close();
-				return;
-			}
-
-			// assigning price to the rows
-			if (row <= 15)
-			{
-				price = 450;
-			} else if (row <= 30)
-			{
-				price = 300;
 			} else
 			{
-				price = 200;
+				// assigning price to the rows
+				if (row <= 15)
+				{
+					price = 450;
+				} else if (row <= 30)
+				{
+					price = 300;
+				} else
+				{
+					price = 200;
+				}
+
+				// show the result
+				System.out.println("Section " + sectionName + " row " + row + " price: $" + price);
 			}
-
-			// show the result
-			System.out.println("Section " + sectionName + " row " + row + " price: $" + price);
-
-		} catch (InputMismatchException e)
-		{
-			System.out.println("Invalid input for row. Please enter a number.");
-			System.out.println("Invalid row, program ending");
 		}
-	}// end of class
-}// end of main
+
+	}// end of main
+}// end of ConcertTicketPrices
