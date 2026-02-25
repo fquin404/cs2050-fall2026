@@ -18,20 +18,20 @@ public class DiceGame
 			{
 				if (d1 + d2 == 7)
 				{
-					System.out.println(", Winner");
+					System.out.println(", Winner!");
 				} else
 				{
 					if (d1 + d2 == 11)
 					{
-						System.out.println(", Winner");
+						System.out.println(", Winner!");
 					} else
 					{
 						if (d1 + d2 == 12)
 						{
-							System.out.println(", Jackpot");
+							System.out.println(", Jackpot!!");
 						} else
 						{
-							System.out.println(", Loser");
+							System.out.println(", Loser :P");
 						}
 					}
 				}
