@@ -1,9 +1,5 @@
 
 /**
- *
- */
-
-/**
  * 
  */
 import java.util.Scanner;
@@ -13,7 +9,7 @@ public class PasswordUser
 
 	static String password = "passington";
 	static String username = "Lumina";
-//int attempts = 0;
+// attempts = 0;
 
 	// boolean loggedIn = false
 

@@ -74,4 +74,4 @@ public class ConcertTicketPrices
 		}
 
 	}// end of main
-}// end of ConcertTicketPrices
+}// end of class

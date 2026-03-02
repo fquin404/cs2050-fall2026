@@ -1,6 +1,3 @@
-
-// ADD CODE to import Scanner class
-
 public class DiceGame
 {
 
