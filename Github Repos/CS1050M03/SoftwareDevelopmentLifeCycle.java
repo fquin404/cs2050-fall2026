@@ -1,12 +1,21 @@
 
+/*
+ *  Name: Francisco Quintero
+ *  Class: CS1050 M/W
+ *  Description: Guided Exploration 03
+ */
 /**
- * Calculate the BMI using formula in US units. 
- * User will enter weight in pounds and height in inches
+Team and Athlete Analysis 
+The trainer enters athlete data until they indicate they are done entering data. The trainer will enter each athlete’s weight and height
+For each athlete entered, the BMI value and category will be displayed based on these BMI ranges.
+Under 18.5: Underweight
+18.5 to under 25: Normal
+25 to under 30: Overweight
+30 or greater: Obese 
  */
 import java.util.Scanner;
-// ADD CODE to import Scanner class
 
-public class BodyMassIndexActivity
+public class SoftwareDevelopmentLifeCycle
 {
 
 	public static void main(String[] args)
@@ -57,4 +66,10 @@ public class BodyMassIndexActivity
 			}
 		}
 	}// end of main
+
+{
+	public static String main(String[] ClassBody);
+	
+	
+}
 }// end of class
