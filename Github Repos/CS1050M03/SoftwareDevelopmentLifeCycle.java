@@ -66,10 +66,4 @@ public class SoftwareDevelopmentLifeCycle
 			}
 		}
 	}// end of main
-
-{
-	public static String main(String[] ClassBody);
-	
-	
-}
 }// end of class
