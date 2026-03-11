@@ -18,7 +18,7 @@ public class SoftwareDevelopmentLifeCycle
 
 	}// end of printSummary
 
-	public void GetPositiveDouble(String[] args)
+	public static void GetPositiveDouble(String[] args)
 	{
 		Scanner input = new Scanner(System.in);
 		{
@@ -76,14 +76,18 @@ public class SoftwareDevelopmentLifeCycle
 		}
 	}
 
-	public static boolean AskToContinue()
-	{
-
-		return true;
-	}
-
+	/*
+	 * public static boolean AskToContinue() {
+	 * 
+	 * return true; }
+	 */
 	public static void main(String[] args)
 	{
+		printSummary(args);
+		GetPositiveDouble(args);
+		BMICalculator(0, 0);
+		displayBMI(0);
+		// AskToContinue();
 
 	}// end of main
 }// end of class
