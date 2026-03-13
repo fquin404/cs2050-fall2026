@@ -1,93 +1,125 @@
-
 /*
  *  Name: Francisco Quintero
  *  Class: CS1050 M/W
  *  Description: Guided Exploration 03
  */
+
 import java.util.Scanner;
 
 public class SoftwareDevelopmentLifeCycle
 {
-	public static void printSummary(String[] args)
+
+	public static void printSummary()
 	{
 		System.out.println("Team and Athlete Analysis \n"
 				+ "The trainer enters athlete data until they indicate they are done entering data. The trainer will enter each athlete’s weight and height\n"
 				+ "For each athlete entered, the BMI value and category will be displayed based on these BMI ranges.\n"
 				+ "Under 18.5: Underweight\n" + "18.5 to under 25: Normal\n" + "25 to under 30: Overweight\n"
 				+ "30 or greater: Obese");
+	}
 
-	}// end of printSummary
-
-	public static void GetPositiveDouble(String[] args)
+	public static void GetPositiveDouble(Scanner input)
 	{
-		Scanner input = new Scanner(System.in);
+		double weight;
+		double height;
+
+		do
 		{
-			// Get the user's weight.
-			System.out.print("Enter your weight, in pounds: ");
-			// ADD CODE to input next double for weight
-			final double weight = input.nextDouble();
-			// Get the user's height.
-			System.out.print("Enter your height, in inches: ");
-			// ADD CODE input next double for height
-			final double height = input.nextDouble();
+			System.out.print("Enter athlete weight in pounds: ");
+			weight = input.nextDouble();
 
-			BMICalculator(weight, height);
-		}
+			if (weight <= 0)
+			{
+				System.out.println("Error 404: weight must be greater than 0.");
+			}
 
-	}// end of GetPositiveDouble
+		} while (weight <= 0);
+
+		do
+		{
+			System.out.print("Enter athlete height in inches: ");
+			height = input.nextDouble();
+
+			if (height <= 0)
+			{
+				System.out.println("Error 303: height must be greater than 0.");
+			}
+
+		} while (height <= 0);
+
+		BMICalculator(weight, height);
+	}
 
 	public static void BMICalculator(double weight, double height)
 	{
-		Scanner input = new Scanner(System.in);
-		{
-			final double BMI_US_FACTOR = 730;
-			// Calculate the user's body mass index.
-			double bmi = weight * BMI_US_FACTOR / (Math.pow(height, 2));
-			displayBMI(bmi);
-		}
+		final double BMI_US_FACTOR = 703;
+
+		double bmi = weight * BMI_US_FACTOR / (Math.pow(height, 2));
+
+		displayBMI(bmi);
 	}
 
 	public static void displayBMI(double bmi)
 	{
-		// Display the user's BMI.
+		System.out.printf("Your body mass index (BMI) is %.1f", bmi);
 
-		System.out.printf("Your body mass index (BMI) is %f", bmi);
+		if (bmi < 18.5)
 		{
-			if (bmi <= 18.5)
+			System.out.println(", Needs Review (Underweight)");
+		} else if (bmi < 25)
+		{
+			System.out.println(", Normal");
+		} else if (bmi < 30)
+		{
+			System.out.println(", Overweight");
+		} else
+		{
+			System.out.println(", Obese");
+		}
+	}
+
+	public static boolean AskToContinue(Scanner input)
+	{
+		char response;
+
+		while (true)
+		{
+			System.out.print("Enter another athlete? (y/n): ");
+			response = input.next().charAt(0);
+
+			if (response == 'y' || response == 'Y')
 			{
-				System.out.println(", you are Underweight");
+				return true;
+			} else if (response == 'n' || response == 'N')
+			{
+				return false;
 			} else
 			{
-				if (bmi <= 24.9)
-				{
-					System.out.println(", you are Healthy");
-				} else
-				{
-					if (bmi <= 29.9)
-					{
-						System.out.println(", you are Overweight");
-					} else
-					{
-						if (bmi >= 30)
-							System.out.println(", you are Obese");
-					}
-				}
+				System.out.println("Invalid entry. Please enter y or n.");
 			}
 		}
 	}
 
-	/*
-	 * public static boolean AskToContinue() {
-	 * 
-	 * return true; }
-	 */
 	public static void main(String[] args)
 	{
-		printSummary(args);
-		GetPositiveDouble(args);
-		BMICalculator(0, 0);
-		displayBMI(0);
-		// AskToContinue();
+		Scanner input = new Scanner(System.in);
 
-	}// end of main
-}// end of class
+		int athleteCount = 0;
+		boolean continueEntry;
+
+		printSummary();
+
+		do
+		{
+			GetPositiveDouble(input);
+			athleteCount++;
+
+			continueEntry = AskToContinue(input);
+
+		} while (continueEntry);
+
+		System.out.println(athleteCount + " athlete calculations were completed.");
+
+		input.close();
+	}
+}
