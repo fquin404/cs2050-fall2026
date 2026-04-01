@@ -1,3 +1,9 @@
+
+/*
+ *  Name: Francisco Quintero
+ *  Class: CS1050 M/W
+ *  Description: Project a1
+ */
 import java.util.Scanner;
 
 public class TrainingHeartRate
@@ -15,7 +21,7 @@ public class TrainingHeartRate
 
 		char response = ' ';
 
-		// Validate y/n response without using break
+		// validate y/n
 		while (response != 'y' && response != 'Y' && response != 'n' && response != 'N')
 		{
 			System.out.print("Do you want to calculate the training heart rates? (y/n): ");
@@ -31,7 +37,7 @@ public class TrainingHeartRate
 		{
 			double percentage = 0;
 
-			// Validate training percentage without using break
+			// validate
 			while (percentage <= 0)
 			{
 				System.out.print("Enter training percentage: ");
@@ -43,10 +49,10 @@ public class TrainingHeartRate
 				}
 			}
 
-			// Convert percentage into decimal
+			// convert percentage into decimal
 			double decimalPercent = percentage / 100.0;
 
-			// Display each athlete's training heart rate
+			// Display training heart rate
 			for (int i = 0; i < athletes.length; i++)
 			{
 				double trainingHeartRate = maxHeartRates[i] * decimalPercent;

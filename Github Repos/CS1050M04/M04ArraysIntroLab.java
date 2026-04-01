@@ -18,6 +18,7 @@ public class M04ArraysIntroLab
 		System.out.println("Minimum grade: " + minGrade + " at index " + minIndex);
 	}
 
+	// Finding index
 	public static int findMinIndex(double[] grades)
 	{
 		int minIndex = 0;

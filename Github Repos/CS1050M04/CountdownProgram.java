@@ -1,3 +1,9 @@
+/*
+ *  Name: Francisco Quintero
+ *  Class: CS1050 M/W
+ *  Description: Quiz Question 3
+ */
+
 import java.util.Scanner;
 
 public class CountdownProgram
