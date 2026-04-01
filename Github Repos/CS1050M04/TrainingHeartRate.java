@@ -7,44 +7,40 @@ public class TrainingHeartRate
 	{
 		Scanner input = new Scanner(System.in);
 
-		// Example athlete names and max heart rates
+		// athlete names and max heart rates
 		String[] athletes =
 		{ "Gordon", "Jokic", "Peyton", "Bruce", "Deb", "Monty" };
 		double[] maxHeartRates =
 		{ 190, 190, 197, 192, 161, 200 };
 
-		char response;
+		char response = ' ';
 
-		// Validate y/n response
-		while (true)
+		// Validate y/n response without using break
+		while (response != 'y' && response != 'Y' && response != 'n' && response != 'N')
 		{
 			System.out.print("Do you want to calculate the training heart rates? (y/n): ");
 			response = input.next().charAt(0);
 
-			if (response == 'y' || response == 'Y' || response == 'n' || response == 'N')
+			if (response != 'y' && response != 'Y' && response != 'n' && response != 'N')
 			{
-				break;
+				System.out.println("Error: enter y, Y, n, or N. Try again.");
 			}
-
-			System.out.println("Error: enter y, Y, n, or N.");
 		}
 
 		if (response == 'y' || response == 'Y')
 		{
-			double percentage;
+			double percentage = 0;
 
-			// Validate training percentage
-			while (true)
+			// Validate training percentage without using break
+			while (percentage <= 0)
 			{
 				System.out.print("Enter training percentage: ");
 				percentage = input.nextDouble();
 
-				if (percentage > 0)
+				if (percentage <= 0)
 				{
-					break;
+					System.out.println("Error: value must be greater than 0. Try again.");
 				}
-
-				System.out.println("Error: value must be greater than 0.");
 			}
 
 			// Convert percentage into decimal
