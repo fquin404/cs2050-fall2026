@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class TrainingHeartRate
 {
 
-	public static void main(String[] args)
+	public TrainingHeartRate(String[] args)
 	{
 		Scanner input = new Scanner(System.in);
 
@@ -52,7 +52,7 @@ public class TrainingHeartRate
 			// convert percentage into decimal
 			double decimalPercent = percentage / 100.0;
 
-			// Display training heart rate
+			// display training heart rate
 			for (int i = 0; i < athletes.length; i++)
 			{
 				double trainingHeartRate = maxHeartRates[i] * decimalPercent;
@@ -62,7 +62,5 @@ public class TrainingHeartRate
 		{
 			System.out.println("Training Program Analysis complete");
 		}
-
-		input.close();
-	}
-}
+	}// end of main
+}// end of class
