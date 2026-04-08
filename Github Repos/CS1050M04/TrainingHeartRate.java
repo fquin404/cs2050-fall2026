@@ -1,7 +1,7 @@
 /*
  *  Name: Francisco Quintero
  *  Class: CS1050 M/W
- *  Description: Quiz Question 3
+ *  Description: project iteration 1a
  */
 
 import java.util.Scanner;
@@ -13,34 +13,33 @@ public class TrainingHeartRate
 	{
 		Scanner input = new Scanner(System.in);
 
-		// Athlete names and maximum heart rates
+		// athlete names and maximum heart rates
 		String[] athletes =
 		{ "Gordon", "Jokic", "Peyton", "Bruce", "Deb", "Monty" };
 		double[] maxHeartRates =
 		{ 190, 190, 197, 192, 161, 200 };
 
-		char response;
+		char response = ' ';
 
-		// Ask user if they want to calculate training heart rates
-		while (true)
+		// aAsk until a valid response is entered
+		while (response != 'y' && response != 'Y' && response != 'n' && response != 'N')
 		{
 			System.out.print("Do you want to calculate the training heart rates? (y/n): ");
 			response = input.next().charAt(0);
 
-			if (response == 'y' || response == 'Y' || response == 'n' || response == 'N')
+			if (response != 'y' && response != 'Y' && response != 'n' && response != 'N')
 			{
-				break;
+				System.out.println("Error: enter y, Y, n, or N. Try again.");
 			}
-
-			System.out.println("Error: enter y, Y, n, or N. Try again.");
 		}
 
 		if (response == 'y' || response == 'Y')
 		{
-			double percentage;
+			double percentage = 0;
+			boolean validPercentage = false;
 
-			// Get a valid training percentage
-			while (true)
+			// ask until a valid percentage is entered
+			while (!validPercentage)
 			{
 				System.out.print("Enter training percentage: ");
 
@@ -50,22 +49,25 @@ public class TrainingHeartRate
 
 					if (percentage > 0)
 					{
-						double decimalPercent = percentage / 100.0;
-
-						System.out.println();
-						for (int i = 0; i < athletes.length; i++)
-						{
-							double trainingHeartRate = maxHeartRates[i] * decimalPercent;
-							System.out.printf("%s Training Heart Rate: %.1f%n", athletes[i], trainingHeartRate);
-						}
-						break;
+						validPercentage = true;
+					} else
+					{
+						System.out.println("Error: value must be greater than 0. Try again.");
 					}
 				} else
 				{
 					input.next();
+					System.out.println("Error: please enter a numeric value.");
 				}
+			}
 
-				System.out.println("Error: value must be greater than 0. Try again.");
+			double decimalPercent = percentage / 100.0;
+
+			System.out.println();
+			for (int i = 0; i < athletes.length; i++)
+			{
+				double trainingHeartRate = maxHeartRates[i] * decimalPercent;
+				System.out.printf("%s Training Heart Rate: %.1f%n", athletes[i], trainingHeartRate);
 			}
 		} else
 		{
@@ -73,5 +75,5 @@ public class TrainingHeartRate
 		}
 
 		input.close();
-	}// end of main
-}// end of class
+	}
+}
