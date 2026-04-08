@@ -75,5 +75,5 @@ public class TrainingHeartRate
 		}
 
 		input.close();
-	}
-}
+	}// end of main
+}// end of class
