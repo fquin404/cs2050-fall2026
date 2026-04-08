@@ -61,6 +61,7 @@ public class TrainingHeartRate
 		} else
 		{
 			System.out.println("Training Program Analysis complete");
+
 		}
 	}// end of main
 }// end of class
