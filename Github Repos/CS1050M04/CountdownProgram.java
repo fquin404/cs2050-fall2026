@@ -2,6 +2,7 @@
  *  Name: Francisco Quintero
  *  Class: CS1050 M/W
  *  Description: Quiz Question 3
+ *  This program will count down.
  */
 
 import java.util.Scanner;
