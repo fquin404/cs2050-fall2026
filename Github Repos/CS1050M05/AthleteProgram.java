@@ -1,3 +1,10 @@
+
+/*
+ *  Name: Francisco Quintero
+ *  Class: CS1050 M/W
+ *  Description: Project Design Iteration (classes)   
+ *  This program will make help trainers to view crucial training data on athletes.
+ */
 import java.util.Scanner;
 
 class Athlete
