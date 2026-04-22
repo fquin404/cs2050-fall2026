@@ -1,0 +1,5 @@
+Dealership: Elite Motors
+Inventory:
+Toyota Camry - $25000.0
+Tesla Model 3 - $40000.0
+BMW M3 - $70000.0
