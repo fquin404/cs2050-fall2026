@@ -1,6 +1,9 @@
 
 import java.util.Scanner;
 
+/**
+ * 
+ */
 public class TrainingApp
 {
 	public static void main(String[] args)

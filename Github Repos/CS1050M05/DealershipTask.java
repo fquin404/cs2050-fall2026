@@ -8,7 +8,7 @@
 import java.io.FileWriter;
 import java.io.IOException;
 
-final class Dealership
+class Dealership
 {
 	private String name;
 	private Car[] inventory;
@@ -91,7 +91,7 @@ final class Dealership
 	}
 }
 
-final class Car
+class Car
 {
 	private String make;
 	private String model;
