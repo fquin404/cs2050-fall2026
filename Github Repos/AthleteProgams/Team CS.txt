@@ -1,0 +1,23 @@
+Team: Team CS
+Total Athletes: 4
+
+Deb
+BMI: 42.91
+Category: High
+MHR: 161
+
+Monty
+BMI: 17.50
+Category: Underweight
+MHR: 200
+
+Bintu
+BMI: 30.13
+Category: High
+MHR: 185
+
+Muffin
+BMI: 21.70
+Category: Normal
+MHR: 195
+
