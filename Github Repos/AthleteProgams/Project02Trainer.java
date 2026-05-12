@@ -4,9 +4,13 @@ import java.io.PrintWriter;
 import java.util.Scanner;
 
 /*
- * ==== Francisco Quintero ====
- * ==== CS1050 M/W ====
- * Trainer App (Classes and Files
+ * Name: Francisco Quintero
+ * Class: CS1050 M/W
+ * Description: Project 02 Trainer App
+ *
+ * This program reads athlete data from text files, stores each athlete as
+ * an Athlete object, adds Athlete objects to a Team, performs team analysis,
+ * and writes athlete results to an output file.
  */
 
 public class Project02Trainer
@@ -15,7 +19,7 @@ public class Project02Trainer
 	{
 		displayProgramSummary();
 
-		// ===== case 1 =====
+		// ===== test 1 =====
 		String fileName = "team1.txt";
 
 		try
@@ -33,7 +37,7 @@ public class Project02Trainer
 			System.out.println("Error: Unable to find file " + fileName);
 		}
 
-		// ===== case 2 =====
+		// ===== test 2 =====
 		fileName = "team2.txt";
 
 		try
@@ -54,26 +58,43 @@ public class Project02Trainer
 		System.out.println("\nEnd of program");
 	}
 
-	// ==== file reading ====
+	/**
+	 * reads athlete data from a file and adds each athlete to the Team.
+	 *
+	 * each line of the file should contain: name weight height age
+	 * 
+	 * @param fileName the name of the input file
+	 * @param team     the Team object that receives Athlete objects
+	 * @throws FileNotFoundException if the input file cannot be found
+	 */
 	public static void teamSetUp(String fileName, Team team) throws FileNotFoundException
 	{
-		Scanner file = new Scanner(new File(fileName));
+		File inputFile = new File(fileName);
+		Scanner fileScanner = new Scanner(inputFile);
 
-		while (file.hasNext())
+		while (fileScanner.hasNext())
 		{
-			String name = file.next();
-			double weight = file.nextDouble();
-			double height = file.nextDouble();
-			int age = file.nextInt();
+			String athleteName = fileScanner.next();
+			double athleteWeight = fileScanner.nextDouble();
+			double athleteHeight = fileScanner.nextDouble();
+			int athleteAge = fileScanner.nextInt();
 
-			Athlete a = new Athlete(name, weight, height, age);
-			team.addAthlete(a);
+			Athlete athlete = new Athlete(athleteName, athleteWeight, athleteHeight, athleteAge);
+			team.addAthlete(athlete);
 		}
 
-		file.close();
+		fileScanner.close();
 	}
 
-	// ==== file analysis ====
+	/**
+	 * runs all team analysis methods and writes athlete results to an output file.
+	 *
+	 * this method keeps main shorter by grouping the steps required after a Team
+	 * has been created and filled with Athlete objects.
+	 *
+	 * @param team the Team object being analyzed
+	 * @throws FileNotFoundException if the output file cannot be created
+	 */
 	public static void runAnalysis(Team team) throws FileNotFoundException
 	{
 		System.out.println("\n========== Team Analysis ==========");
@@ -84,10 +105,10 @@ public class Project02Trainer
 		team.displayAthleteResults();
 		team.displayAthletesOutsideNormalBMI();
 
-		double avg = team.calculateAverageMaxHeartRate();
-		System.out.printf("\nAverage Max Heart Rate: %.2f\n", avg);
+		double averageMaxHeartRate = team.calculateAverageMaxHeartRate();
+		System.out.printf("\nAverage Max Heart Rate: %.2f\n", averageMaxHeartRate);
 
-		team.displayAthletesAboveAverageMHR(avg);
+		team.displayAthletesAboveAverageMHR(averageMaxHeartRate);
 		team.displayHighestMHR();
 		team.displaySmallestLargestHeight();
 
@@ -95,7 +116,9 @@ public class Project02Trainer
 		team.writeAthletesToFile(outputFileName);
 	}
 
-	// ==== display summry ====
+	/**
+	 * displays a short summary of what the program does.
+	 */
 	public static void displayProgramSummary()
 	{
 		System.out.println("**************************************");
@@ -109,220 +132,399 @@ public class Project02Trainer
 	}
 }
 
-// ==== athlete class ====
+// ATHLETE CLASS
+
+/**
+ * represents one athlete.
+ *
+ * the Athlete class stores the athlete's original data: name, weight, height,
+ * and age.
+ *
+ * BMI and max heart rate are not stored as fields. They are calculated through
+ * methods when needed.
+ */
 class Athlete
 {
 	private String name;
+	private double weight;
 	private double height;
-	private double bmi;
-	private int mhr;
+	private int age;
 
+	/**
+	 * creates an Athlete object using data read from the input file.
+	 *
+	 * @param name   the athlete's name
+	 * @param weight the athlete's weight in pounds
+	 * @param height the athlete's height in inches
+	 * @param age    the athlete's age in years
+	 */
 	public Athlete(String name, double weight, double height, int age)
 	{
 		this.name = name;
+		this.weight = weight;
 		this.height = height;
-		this.bmi = (703 * weight) / (height * height);
-		this.mhr = 220 - age;
+		this.age = age;
 	}
 
+	/**
+	 * gets the athlete's name.
+	 *
+	 * @return the athlete's name
+	 */
 	public String getName()
 	{
 		return name;
 	}
 
+	/**
+	 * gets the athlete's weight.
+	 *
+	 * @return the athlete's weight in pounds
+	 */
+	public double getWeight()
+	{
+		return weight;
+	}
+
+	/**
+	 * gets the athlete's height.
+	 *
+	 * @return the athlete's height in inches
+	 */
 	public double getHeight()
 	{
 		return height;
 	}
 
-	public double getBMI()
+	/**
+	 * gets the athlete's age.
+	 *
+	 * @return the athlete's age in years
+	 */
+	public int getAge()
 	{
-		return bmi;
+		return age;
 	}
 
-	public int getMHR()
+	/**
+	 * calculates the athlete's BMI using the formula: 703 * weight / height
+	 * squared.
+	 *
+	 * @return the calculated BMI
+	 */
+	public double calculateBMI()
 	{
-		return mhr;
+		double calculatedBMI = (703 * weight) / (height * height);
+
+		return calculatedBMI;
 	}
 
-	public String getBMICategory()
+	/**
+	 * calculates the athlete's max heart rate using the formula: 220 - age.
+	 *
+	 * @return the calculated max heart rate
+	 */
+	public int calculateMaxHeartRate()
 	{
-		if (bmi < 18.5)
-			return "Underweight";
-		else if (bmi < 30)
-			return "Normal";
-		else
-			return "High";
+		int calculatedMaxHeartRate = 220 - age;
+
+		return calculatedMaxHeartRate;
+	}
+
+	/**
+	 * determines the athlete's BMI category.
+	 *
+	 * Under 18.5 is Underweight. 18.5 to under 30 is Normal. 30 or greater is High.
+	 *
+	 * @return the BMI category as a String
+	 */
+	public String determineBMICategory()
+	{
+		String bmiCategory;
+		double calculatedBMI = calculateBMI();
+
+		if (calculatedBMI < 18.5)
+		{
+			bmiCategory = "Underweight";
+		} else if (calculatedBMI < 30)
+		{
+			bmiCategory = "Normal";
+		} else
+		{
+			bmiCategory = "High";
+		}
+
+		return bmiCategory;
 	}
 }
 
-// ==== team class ====
+// TEAM CLASS
+
+/**
+ * represents a team of athletes.
+ *
+ * the Team class stores an array of Athlete objects and provides methods for
+ * displaying athlete results, analyzing BMI, analyzing max heart rate, finding
+ * height ranges, and writing results to a file.
+ */
 class Team
 {
 	private String teamName;
 	private Athlete[] athletes;
-	private int count;
+	private int athleteCount;
 
-	public Team(String teamName, int size)
+	/**
+	 * creates a Team object.
+	 *
+	 * @param teamName the name of the team
+	 * @param teamSize the maximum number of athletes the team can store
+	 */
+	public Team(String teamName, int teamSize)
 	{
 		this.teamName = teamName;
-		athletes = new Athlete[size];
-		count = 0;
+		athletes = new Athlete[teamSize];
+		athleteCount = 0;
 	}
 
-	public void addAthlete(Athlete a)
+	/**
+	 * adds an Athlete object to the team if there is room.
+	 *
+	 * if the team is full, the athlete is not added and a message is displayed.
+	 *
+	 * @param athlete the Athlete object to add
+	 */
+	public void addAthlete(Athlete athlete)
 	{
-		if (count < athletes.length)
+		if (athleteCount < athletes.length)
 		{
-			athletes[count] = a;
-			count++;
+			athletes[athleteCount] = athlete;
+			athleteCount++;
 		} else
 		{
-			System.out.println("Team is full. Can't add " + a.getName());
+			System.out.println("Team is full. Can't add " + athlete.getName());
 		}
 	}
 
+	/**
+	 * gets the team name.
+	 *
+	 * @return the team name
+	 */
 	public String getTeamName()
 	{
 		return teamName;
 	}
 
+	/**
+	 * gets the number of athletes currently stored in the team.
+	 *
+	 * @return the number of athletes in the team
+	 */
 	public int getAthleteCount()
 	{
-		return count;
+		return athleteCount;
 	}
 
-	// ==== display results ====
+	/**
+	 * displays each athlete's BMI, BMI category, and max heart rate.
+	 */
 	public void displayAthleteResults()
 	{
 		System.out.println("========== Athlete Summary ==========");
 
-		for (int i = 0; i < count; i++)
+		for (int athleteIndex = 0; athleteIndex < athleteCount; athleteIndex++)
 		{
-			Athlete a = athletes[i];
-			System.out.println(a.getName());
-			System.out.printf("BMI: %.1f\n", a.getBMI());
-			System.out.println("Category: " + a.getBMICategory());
-			System.out.println("MHR: " + a.getMHR());
+			Athlete currentAthlete = athletes[athleteIndex];
+
+			System.out.println(currentAthlete.getName());
+			System.out.printf("BMI: %.1f\n", currentAthlete.calculateBMI());
+			System.out.println("Category: " + currentAthlete.determineBMICategory());
+			System.out.println("MHR: " + currentAthlete.calculateMaxHeartRate());
 			System.out.println();
 		}
 	}
 
+	/**
+	 * displays athletes whose BMI is outside the normal range.
+	 *
+	 * athletes below 18.5 are listed as below normal. athletes 30 or greater are
+	 * listed as above normal.
+	 */
 	public void displayAthletesOutsideNormalBMI()
 	{
 		System.out.println("Athletes Outside Normal BMI Range:");
 
-		boolean found = false;
+		boolean foundAthleteOutsideNormalRange = false;
 
-		for (int i = 0; i < count; i++)
+		for (int athleteIndex = 0; athleteIndex < athleteCount; athleteIndex++)
 		{
-			Athlete a = athletes[i];
+			Athlete currentAthlete = athletes[athleteIndex];
+			double calculatedBMI = currentAthlete.calculateBMI();
 
-			if (a.getBMI() < 18.5)
+			if (calculatedBMI < 18.5)
 			{
-				System.out.println("Below normal: " + a.getName());
-				found = true;
-			} else if (a.getBMI() >= 30)
+				System.out.println("Below normal: " + currentAthlete.getName());
+				foundAthleteOutsideNormalRange = true;
+			} else if (calculatedBMI >= 30)
 			{
-				System.out.println("Above normal: " + a.getName());
-				found = true;
+				System.out.println("Above normal: " + currentAthlete.getName());
+				foundAthleteOutsideNormalRange = true;
 			}
 		}
 
-		if (!found)
+		if (!foundAthleteOutsideNormalRange)
 		{
 			System.out.println("No athletes outside of normal range");
 		}
 	}
 
+	/**
+	 * calculates the average max heart rate of all athletes on the team.
+	 *
+	 * @return the average max heart rate
+	 */
 	public double calculateAverageMaxHeartRate()
 	{
-		double total = 0;
+		double totalMaxHeartRate = 0;
+		double averageMaxHeartRate = 0;
 
-		for (int i = 0; i < count; i++)
+		if (athleteCount > 0)
 		{
-			total += athletes[i].getMHR();
+			for (int athleteIndex = 0; athleteIndex < athleteCount; athleteIndex++)
+			{
+				totalMaxHeartRate += athletes[athleteIndex].calculateMaxHeartRate();
+			}
+
+			averageMaxHeartRate = totalMaxHeartRate / athleteCount;
 		}
 
-		return total / count;
+		return averageMaxHeartRate;
 	}
 
-	public void displayAthletesAboveAverageMHR(double avg)
+	/**
+	 * displays athletes whose max heart rate is above or equal to the team average.
+	 *
+	 * @param averageMaxHeartRate the average max heart rate for the team
+	 */
+	public void displayAthletesAboveAverageMHR(double averageMaxHeartRate)
 	{
 		System.out.println("\nAthletes above or equal to average MHR:");
 
-		for (int i = 0; i < count; i++)
+		for (int athleteIndex = 0; athleteIndex < athleteCount; athleteIndex++)
 		{
-			if (athletes[i].getMHR() >= avg)
+			Athlete currentAthlete = athletes[athleteIndex];
+
+			if (currentAthlete.calculateMaxHeartRate() >= averageMaxHeartRate)
 			{
-				System.out.println(athletes[i].getName());
+				System.out.println(currentAthlete.getName());
 			}
 		}
 	}
 
+	/**
+	 * finds and displays the athlete with the highest max heart rate.
+	 *
+	 * if duplicate highest values exist, this method displays the first one found.
+	 */
 	public void displayHighestMHR()
 	{
-		int index = 0;
-
-		for (int i = 1; i < count; i++)
+		if (athleteCount > 0)
 		{
-			if (athletes[i].getMHR() > athletes[index].getMHR())
-			{
-				index = i;
-			}
-		}
+			int highestMaxHeartRateIndex = 0;
 
-		System.out.println("\nHighest Max Heart Rate:");
-		System.out.println(athletes[index].getName() + ": " + athletes[index].getMHR());
+			for (int athleteIndex = 1; athleteIndex < athleteCount; athleteIndex++)
+			{
+				if (athletes[athleteIndex].calculateMaxHeartRate() > athletes[highestMaxHeartRateIndex]
+						.calculateMaxHeartRate())
+				{
+					highestMaxHeartRateIndex = athleteIndex;
+				}
+			}
+
+			System.out.println("\nHighest Max Heart Rate:");
+			System.out.println(athletes[highestMaxHeartRateIndex].getName() + ": "
+					+ athletes[highestMaxHeartRateIndex].calculateMaxHeartRate());
+		} else
+		{
+			System.out.println("\nHighest Max Heart Rate:");
+			System.out.println("No athletes available");
+		}
 	}
 
+	/**
+	 * finds and displays the shortest and tallest athletes.
+	 *
+	 * if duplicate values exist, this method displays the first one found.
+	 */
 	public void displaySmallestLargestHeight()
 	{
-		int smallest = 0;
-		int largest = 0;
-
-		for (int i = 1; i < count; i++)
+		if (athleteCount > 0)
 		{
-			if (athletes[i].getHeight() < athletes[smallest].getHeight())
+			int shortestAthleteIndex = 0;
+			int tallestAthleteIndex = 0;
+
+			for (int athleteIndex = 1; athleteIndex < athleteCount; athleteIndex++)
 			{
-				smallest = i;
+				if (athletes[athleteIndex].getHeight() < athletes[shortestAthleteIndex].getHeight())
+				{
+					shortestAthleteIndex = athleteIndex;
+				}
+
+				if (athletes[athleteIndex].getHeight() > athletes[tallestAthleteIndex].getHeight())
+				{
+					tallestAthleteIndex = athleteIndex;
+				}
 			}
 
-			if (athletes[i].getHeight() > athletes[largest].getHeight())
-			{
-				largest = i;
-			}
+			System.out.println("\nShortest Athlete:");
+			System.out.println(
+					athletes[shortestAthleteIndex].getName() + " - " + athletes[shortestAthleteIndex].getHeight());
+
+			System.out.println("Tallest Athlete:");
+			System.out.println(
+					athletes[tallestAthleteIndex].getName() + " - " + athletes[tallestAthleteIndex].getHeight());
+		} else
+		{
+			System.out.println("\nShortest Athlete:");
+			System.out.println("No athletes available");
+
+			System.out.println("Tallest Athlete:");
+			System.out.println("No athletes available");
 		}
-
-		System.out.println("\nShortest Athlete:");
-		System.out.println(athletes[smallest].getName() + " - " + athletes[smallest].getHeight());
-
-		System.out.println("Tallest Athlete:");
-		System.out.println(athletes[largest].getName() + " - " + athletes[largest].getHeight());
 	}
 
+	/**
+	 * writes athlete results to an output file.
+	 *
+	 * the file includes the team name, total athletes, and each athlete's BMI, BMI
+	 * category, and max heart rate.
+	 *
+	 * @param fileName the name of the output file
+	 * @throws FileNotFoundException if the output file cannot be created
+	 */
 	public void writeAthletesToFile(String fileName) throws FileNotFoundException
 	{
-		PrintWriter writer = new PrintWriter(fileName);
+		File outputFile = new File(fileName);
+		PrintWriter writer = new PrintWriter(outputFile);
 
 		writer.println("Team: " + teamName);
-		writer.println("Total Athletes: " + count);
+		writer.println("Total Athletes: " + athleteCount);
 		writer.println();
 
-		for (int i = 0; i < count; i++)
+		for (int athleteIndex = 0; athleteIndex < athleteCount; athleteIndex++)
 		{
-			Athlete a = athletes[i];
+			Athlete currentAthlete = athletes[athleteIndex];
 
-			writer.println(a.getName());
-			writer.printf("BMI: %.2f\n", a.getBMI());
-			writer.println("Category: " + a.getBMICategory());
-			writer.println("MHR: " + a.getMHR());
+			writer.println(currentAthlete.getName());
+			writer.printf("BMI: %.2f\n", currentAthlete.calculateBMI());
+			writer.println("Category: " + currentAthlete.determineBMICategory());
+			writer.println("MHR: " + currentAthlete.calculateMaxHeartRate());
 			writer.println();
 		}
 
 		writer.close();
 
 		System.out.println("\nResults written to file:");
-		System.out.println(fileName);
+		System.out.println(outputFile.getAbsolutePath());
 	}
 }
