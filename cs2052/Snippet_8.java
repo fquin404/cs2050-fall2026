@@ -4,12 +4,13 @@
 // WHY:       doubled is not able to be pulled, the compiler receives an error
 /**
  * 
- */
+ 
 public class Snippet_8 {
 
-	/**
+	
 	 * @param args
 	 */
+/*
 	public static void main(String[] args) {
 		int[] scores = {88, 92, 79};
 		for (int i = 0; i < scores.length; i++) {
@@ -21,3 +22,4 @@ System.out.println(doubled);
 	}
 
 }
+*/

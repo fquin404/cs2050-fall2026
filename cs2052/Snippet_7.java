@@ -6,11 +6,13 @@
 /**
  * 
  */
+/*
 public class Snippet_7 {
 
 	/**
 	 * @param args
 	 */
+/*
 	public static void main(String[] args) {
 		Counter c = new Counter();
 		c.setCount(10);
@@ -34,3 +36,4 @@ public class Snippet_7 {
 	
 	
 }
+*/
