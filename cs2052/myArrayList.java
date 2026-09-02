@@ -1,6 +1,6 @@
 //Francisco Quintero CS2050 M/W Prof. Sasha
 
-//DO NOT DELETE KEEP THIS AS AN EXAMPLE / REFERENCE FOR LATER
+//DO NOT DELETE KEEP / THIS AS AN EXAMPLE / REFERENCE FOR LATER
 
 public class myArrayList { // creates the custom array list class
 
@@ -14,11 +14,11 @@ public class myArrayList { // creates the custom array list class
 
 		add(a); // adds the starting number to the list
 
-	} // ends the constructor
+	} // end of the constructor
 
 	public myArrayList() { // creates an empty list
 
-	} // ends the empty constructor
+	} // end of the empty constructor
 
 	public void add(int a) { // adds a number to the end of the list
 
@@ -30,17 +30,17 @@ public class myArrayList { // creates the custom array list class
 
 				newArray[i] = privateArray[i]; // copies each number into the new array
 
-			} // ends the copying loop
+			} // end of the copying loop
 
 			privateArray = newArray; // replaces the old array with the new array
 
-		} // ends the full array check
+		} // end of the full array check
 
 		privateArray[size] = a; // places the number in the next open space
 
 		size++; // increases the number of stored items
 
-	} // ends the add method
+	} // end of the add method
 
 	public void add(int index, int a) { // adds a number at a chosen index
 
@@ -54,25 +54,25 @@ public class myArrayList { // creates the custom array list class
 
 					newArray[i] = privateArray[i]; // copies each number into the new array
 
-				} // ends the copying loop
+				} // end of copying loop
 
 				privateArray = newArray; // replaces the old array with the new array
 
-			} // ends the full array check
+			} // end of full array check
 
 			for (int i = size; i > index; i--) { // moves later numbers one space to the right
 
 				privateArray[i] = privateArray[i - 1]; // copies the number from the space on the left
 
-			} // ends the shifting loop
+			} // end of shifting loop
 
 			privateArray[index] = a; // places the new number at the chosen index
 
 			size++; // increases the number of stored items
 
-		} // ends the index check
+		} // end of the index check
 
-	} // ends the indexed add method
+	} // end of indexed add method
 
 	public void remove() { // removes the last number in the list
 
@@ -82,9 +82,9 @@ public class myArrayList { // creates the custom array list class
 
 			privateArray[size] = 0; // clears the unused array space
 
-		} // ends the empty list check
+		} // end of the empty list check
 
-	} // ends the remove method
+	} // end of the remove method
 
 	public void remove(int index) { // removes the number at a chosen index
 
@@ -94,21 +94,21 @@ public class myArrayList { // creates the custom array list class
 
 				privateArray[i] = privateArray[i + 1]; // copies the next number into the current space
 
-			} // ends the shifting loop
+			} // end of shifting loop
 
 			size--; // lowers the number of stored items by one
 
 			privateArray[size] = 0; // clears the unused array space
 
-		} // ends the index check
+		} // end of index check
 
-	} // ends the indexed remove method
+	} // end of index remove
 
 	public int get(int index) { // gets the number at a chosen index
 
 		return privateArray[index]; // returns the number from the chosen index
 
-	} // ends the get method
+	} // end of the get method
 
 	public String toString() { // changes the list into a string
 
@@ -118,10 +118,10 @@ public class myArrayList { // creates the custom array list class
 
 			temp = temp + privateArray[i]; // adds each number to the string
 
-		} // ends the string loop
+		} // end of string loop
 
 		return temp; // returns the completed string
 
-	} // ends the toString method
+	} // end of toString method
 
-} // ends the custom array list class
+} // end of class
