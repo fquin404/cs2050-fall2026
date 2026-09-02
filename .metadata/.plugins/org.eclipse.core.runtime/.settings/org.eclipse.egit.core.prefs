@@ -1,4 +1,4 @@
-GitRepositoriesView.GitDirectories=/Applications/cs2050-fall2026/.git\:
-GitRepositoriesView.GitDirectories.relative=.git\:
+GitRepositoriesView.GitDirectories=/Applications/cs2050-fall2026/.git\:/Applications/SimpleArrayList/.git\:
+GitRepositoriesView.GitDirectories.relative=.git\:/Applications/SimpleArrayList/.git\:
 core_defaultRepositoryDir=/Applications/Lumina/Github Repos
 eclipse.preferences.version=1
