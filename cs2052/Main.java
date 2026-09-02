@@ -1,6 +1,6 @@
 //Francisco Quintero CS2050 M/W Prof. Sasha
 
-public class Main { // creates the main class
+public class Main {
 
 	public static void main(String[] args) { // starts the main method
 
@@ -44,6 +44,6 @@ public class Main { // creates the main class
 
 		System.out.println("list made with the second constructor: " + startingNumber); // tests the second constructor
 
-	} // ends the main method
+	} // end of main
 
-} // ends the main class
+} // end of class

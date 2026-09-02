@@ -2,7 +2,7 @@
 
 //DO NOT DELETE KEEP / THIS AS AN EXAMPLE / REFERENCE FOR LATER
 
-public class myArrayList { // creates the custom array list class
+public class myArrayList {
 
 	int intSize = 1; // sets the starting array length to one
 
