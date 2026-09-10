@@ -7,11 +7,10 @@ public class Main {
         System.out.println("New list:");
         System.out.println(list.debugView());
 
-        // TODO: After implementing add, uncomment these lines:
-        // list.add("A");
-        // list.add("B");
-        // list.add("C");
-        // System.out.println(System.lineSeparator() + "After adding A, B, and C:");
-        // System.out.println(list.debugView());
+        list.add("A"); // adds a to the list
+        list.add("B"); // adds b to the list
+        list.add("C"); // adds c to the list
+        System.out.println(System.lineSeparator() + "After adding A, B, and C:"); // prints a heading
+        System.out.println(list.debugView()); // prints the updated list
     }
 }
