@@ -1,0 +1,33 @@
+Team: Nuggets
+Total Athletes: 6
+
+Gordon
+BMI: 25.81
+Category: Normal
+MHR: 190
+
+Jokic
+BMI: 28.98
+Category: Normal
+MHR: 190
+
+Peyton
+BMI: 21.97
+Category: Normal
+MHR: 197
+
+Bruce
+BMI: 24.59
+Category: Normal
+MHR: 192
+
+Deb
+BMI: 43.07
+Category: High
+MHR: 161
+
+Monty
+BMI: 17.63
+Category: Underweight
+MHR: 200
+

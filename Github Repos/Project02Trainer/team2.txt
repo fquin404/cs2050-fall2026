@@ -1,0 +1,5 @@
+Mike 250 64 59
+Randy 140 75 20
+Lumina 210 70 35
+Muffington 160 72 25
+Sparkothy 300 68 40
